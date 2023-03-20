@@ -1,0 +1,81 @@
+config("h265nal_config") {
+  include_dirs = [ "webrtc" ]
+}
+
+static_library("h265nal") {
+  sources = [
+    "src/h265_aud_parser.cc",
+    "src/h265_aud_parser.h",
+    "src/h265_bitstream_parser.cc",
+    "src/h265_bitstream_parser.h",
+    "src/h265_bitstream_parser_state.cc",
+    "src/h265_bitstream_parser_state.h",
+    "src/h265_common.cc",
+    "src/h265_common.h",
+    "src/h265_hrd_parameters_parser.cc",
+    "src/h265_hrd_parameters_parser.h",
+    "src/h265_nal_unit_header_parser.cc",
+    "src/h265_nal_unit_header_parser.h",
+    "src/h265_nal_unit_parser.cc",
+    "src/h265_nal_unit_parser.h",
+    "src/h265_nal_unit_payload_parser.cc",
+    "src/h265_nal_unit_payload_parser.h",
+    "src/h265_pps_parser.cc",
+    "src/h265_pps_parser.h",
+    "src/h265_pps_scc_extension_parser.cc",
+    "src/h265_pps_scc_extension_parser.h",
+    "src/h265_pred_weight_table_parser.cc",
+    "src/h265_pred_weight_table_parser.h",
+    "src/h265_profile_tier_level_parser.cc",
+    "src/h265_profile_tier_level_parser.h",
+    "src/h265_scaling_list_data_parser.cc",
+    "src/h265_scaling_list_data_parser.h",
+    "src/h265_slice_parser.cc",
+    "src/h265_slice_parser.h",
+    "src/h265_sps_3d_extension_parser.cc",
+    "src/h265_sps_3d_extension_parser.h",
+    "src/h265_sps_multilayer_extension_parser.cc",
+    "src/h265_sps_multilayer_extension_parser.h",
+    "src/h265_sps_parser.cc",
+    "src/h265_sps_parser.h",
+    "src/h265_sps_range_extension_parser.cc",
+    "src/h265_sps_range_extension_parser.h",
+    "src/h265_sps_scc_extension_parser.cc",
+    "src/h265_sps_scc_extension_parser.h",
+    "src/h265_st_ref_pic_set_parser.cc",
+    "src/h265_st_ref_pic_set_parser.h",
+    "src/h265_sub_layer_hrd_parameters_parser.cc",
+    "src/h265_sub_layer_hrd_parameters_parser.h",
+    "src/h265_vps_parser.cc",
+    "src/h265_vps_parser.h",
+    "src/h265_vui_parameters_parser.cc",
+    "src/h265_vui_parameters_parser.h",
+    "webrtc/h265nal_base/bit_buffer.cc",
+    "webrtc/h265nal_base/arraysize.h",
+    "webrtc/h265nal_base/constructor_magic.h",
+    "webrtc/h265nal_base/bit_buffer.h",
+    # The following files are not needed in current configuration but may be useful later
+    #"src/h265_rtp_ap_parser.cc",
+    #"src/h265_rtp_ap_parser.h",
+    #"src/h265_rtp_fu_parser.cc",
+    #"src/h265_rtp_fu_parser.h",
+    #"src/h265_rtp_parser.cc",
+    #"src/h265_rtp_parser.h",
+    #"src/h265_rtp_single_parser.cc",
+    #"src/h265_rtp_single_parser.h",
+    #"src/h265_utils.cc",
+    #"src/h265_utils.h",
+  ]
+  if (is_clang) {
+    cflags_cc = [
+      "-Wno-extra-semi",
+      "-Wno-macro-redefined", # __STDC_FORMAT_MACROS
+      "-Wno-unused-variable", # release build has some unused vars from DCHECKS
+    ]
+  } else if (is_win) {
+    cflags_cc = [
+      "/wd4189",
+    ]
+  }
+  public_configs = [ ":h265nal_config" ]
+}
