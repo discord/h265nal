@@ -9,7 +9,7 @@
 #include <memory>
 #include <vector>
 
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 namespace h265nal {
 
@@ -60,7 +60,7 @@ class H265SpsSccExtensionParser {
       uint32_t bit_depth_luma_minus8,
       uint32_t bit_depth_chroma_minus8) noexcept;
   static std::unique_ptr<SpsSccExtensionState> ParseSpsSccExtension(
-      rtc::BitBuffer* bit_buffer, uint32_t chroma_format_idc,
+      h265nal_base::BitBuffer* bit_buffer, uint32_t chroma_format_idc,
       uint32_t bit_depth_luma_minus8,
       uint32_t bit_depth_chroma_minus8) noexcept;
 };

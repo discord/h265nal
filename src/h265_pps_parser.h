@@ -12,7 +12,7 @@
 #include "h265_pps_scc_extension_parser.h"
 #include "h265_profile_tier_level_parser.h"
 #include "h265_scaling_list_data_parser.h"
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 namespace h265nal {
 
@@ -93,7 +93,7 @@ class H265PpsParser {
   static std::shared_ptr<PpsState> ParsePps(const uint8_t* data,
                                             size_t length) noexcept;
   static std::shared_ptr<PpsState> ParsePps(
-      rtc::BitBuffer* bit_buffer) noexcept;
+      h265nal_base::BitBuffer* bit_buffer) noexcept;
 };
 
 }  // namespace h265nal

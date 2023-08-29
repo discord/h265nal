@@ -11,7 +11,7 @@
 #include "h265_common.h"
 #include "h265_nal_unit_header_parser.h"
 #include "h265_nal_unit_payload_parser.h"
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 namespace h265nal {
 
@@ -55,7 +55,7 @@ class H265NalUnitParser {
       struct H265BitstreamParserState* bitstream_parser_state,
       bool add_checksum) noexcept;
   static std::unique_ptr<NalUnitState> ParseNalUnit(
-      rtc::BitBuffer* bit_buffer,
+      h265nal_base::BitBuffer* bit_buffer,
       struct H265BitstreamParserState* bitstream_parser_state,
       bool add_checksum) noexcept;
   static std::unique_ptr<NalUnitState> ParseNalUnit(
@@ -65,7 +65,7 @@ class H265NalUnitParser {
                         /*add_checksum*/ false);
   }
   static std::unique_ptr<NalUnitState> ParseNalUnit(
-      rtc::BitBuffer* bit_buffer,
+      h265nal_base::BitBuffer* bit_buffer,
       struct H265BitstreamParserState* bitstream_parser_state) noexcept {
     return ParseNalUnit(bit_buffer, bitstream_parser_state,
                         /*add_checksum*/ false);

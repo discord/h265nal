@@ -27,14 +27,14 @@ H265NalUnitParser::ParseNalUnit(
     struct H265BitstreamParserState* bitstream_parser_state,
     bool add_checksum) noexcept {
   std::vector<uint8_t> unpacked_buffer = UnescapeRbsp(data, length);
-  rtc::BitBuffer bit_buffer(unpacked_buffer.data(), unpacked_buffer.size());
+  h265nal_base::BitBuffer bit_buffer(unpacked_buffer.data(), unpacked_buffer.size());
 
   return ParseNalUnit(&bit_buffer, bitstream_parser_state, add_checksum);
 }
 
 std::unique_ptr<H265NalUnitParser::NalUnitState>
 H265NalUnitParser::ParseNalUnit(
-    rtc::BitBuffer* bit_buffer,
+    h265nal_base::BitBuffer* bit_buffer,
     struct H265BitstreamParserState* bitstream_parser_state,
     bool add_checksum) noexcept {
   // H265 NAL Unit (nal_unit()) parser.

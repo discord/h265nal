@@ -9,7 +9,7 @@
 #include <memory>
 #include <vector>
 
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 namespace h265nal {
 
@@ -48,7 +48,7 @@ class H265SpsRangeExtensionParser {
   static std::unique_ptr<SpsRangeExtensionState> ParseSpsRangeExtension(
       const uint8_t* data, size_t length) noexcept;
   static std::unique_ptr<SpsRangeExtensionState> ParseSpsRangeExtension(
-      rtc::BitBuffer* bit_buffer) noexcept;
+      h265nal_base::BitBuffer* bit_buffer) noexcept;
 };
 
 }  // namespace h265nal

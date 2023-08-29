@@ -8,15 +8,15 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#ifndef RTC_BASE_BIT_BUFFER_H_
-#define RTC_BASE_BIT_BUFFER_H_
+#ifndef H265NAL_BASE_BIT_BUFFER_H_
+#define H265NAL_BASE_BIT_BUFFER_H_
 
 #include <stddef.h>  // For size_t.
 #include <stdint.h>  // For integer types.
 
-#include "rtc_base/constructor_magic.h"
+#include "h265nal_base/constructor_magic.h"
 
-namespace rtc {
+namespace h265nal_base {
 
 // A class, similar to ByteBuffer, that can parse bit-sized data out of a set of
 // bytes. Has a similar API to ByteBuffer, plus methods for reading bit-sized
@@ -103,7 +103,7 @@ class BitBuffer {
   // The current offset, in bits, into the current byte.
   size_t bit_offset_;
 
-  RTC_DISALLOW_COPY_AND_ASSIGN(BitBuffer);
+  H265NAL_DISALLOW_COPY_AND_ASSIGN(BitBuffer);
 };
 
 // A BitBuffer API for write operations. Supports symmetric write APIs to the
@@ -144,9 +144,9 @@ class BitBufferWriter : public BitBuffer {
   // The buffer, as a writable array.
   uint8_t* const writable_bytes_;
 
-  RTC_DISALLOW_COPY_AND_ASSIGN(BitBufferWriter);
+  H265NAL_DISALLOW_COPY_AND_ASSIGN(BitBufferWriter);
 };
 
-}  // namespace rtc
+}  // namespace h265nal_base
 
-#endif  // RTC_BASE_BIT_BUFFER_H_
+#endif  // H265NAL_BASE_BIT_BUFFER_H_

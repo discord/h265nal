@@ -18,7 +18,7 @@
 #include "h265_sps_scc_extension_parser.h"
 #include "h265_st_ref_pic_set_parser.h"
 #include "h265_vui_parameters_parser.h"
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 namespace h265nal {
 
@@ -162,7 +162,7 @@ class H265SpsParser {
   static std::shared_ptr<SpsState> ParseSps(const uint8_t* data,
                                             size_t length) noexcept;
   static std::shared_ptr<SpsState> ParseSps(
-      rtc::BitBuffer* bit_buffer) noexcept;
+      h265nal_base::BitBuffer* bit_buffer) noexcept;
 };
 
 }  // namespace h265nal
