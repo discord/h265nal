@@ -8,7 +8,7 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 #include <algorithm>
 #include <limits>
@@ -80,7 +80,7 @@ size_t CountBits(uint64_t val) {
 
 }  // namespace
 
-namespace rtc {
+namespace h265nal_base {
 
 BitBuffer::BitBuffer(const uint8_t* bytes, size_t byte_count)
     : bytes_(bytes), byte_count_(byte_count), byte_offset_(), bit_offset_() {
@@ -398,4 +398,4 @@ bool BitBufferWriter::WriteSignedExponentialGolomb(int32_t val) {
   }
 }
 
-}  // namespace rtc
+}  // namespace h265nal_base

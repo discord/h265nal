@@ -12,7 +12,7 @@
 #include "h265_rtp_ap_parser.h"
 #include "h265_rtp_fu_parser.h"
 #include "h265_rtp_single_parser.h"
-#include "rtc_base/bit_buffer.h"
+#include "h265nal_base/bit_buffer.h"
 
 namespace h265nal {
 
@@ -46,7 +46,7 @@ class H265RtpParser {
       const uint8_t* data, size_t length,
       struct H265BitstreamParserState* bitstream_parser_state) noexcept;
   static std::unique_ptr<RtpState> ParseRtp(
-      rtc::BitBuffer* bit_buffer,
+      h265nal_base::BitBuffer* bit_buffer,
       struct H265BitstreamParserState* bitstream_parser_state) noexcept;
 };
 
